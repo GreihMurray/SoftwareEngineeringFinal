@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "beoP/ykrjVR9UZWoThLSKtsL4CxvpliVBwsvEd1eRso0iL9eqV6sHo/OiI9YNp0MPv8EtObpNlIfh6jxejKsWA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mattk\\OneDrive\\Desktop\\Fall 2020\\Code\\Password Management Software\\Password Management Software.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\mattk\\OneDrive\\Desktop\\Fall 2020\\Code\\Password Management Software\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
+}
