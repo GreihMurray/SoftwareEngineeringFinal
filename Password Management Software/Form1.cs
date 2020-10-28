@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Security.AccessControl;
+using System.Security;
 
 namespace Password_Management_Software
 {
@@ -97,13 +99,21 @@ namespace Password_Management_Software
 
         private void save()
         {
-            string filename = "passwords.txt";
+            string filename = @"passwords.txt";
             StreamWriter outputfile = new StreamWriter(filename);
             for (int i = 0; i < radioButtons.Count; i++)
             {
                 outputfile.WriteLine(radioButtons[i].Text);
             }
             outputfile.Close();
+
+            secure(filename);
+        }
+
+        private void secure(String filename) {
+            FileInfo fInfo = new FileInfo(filename);
+
+            fInfo.Attributes = FileAttributes.Hidden;
         }
 
         private void load_file()

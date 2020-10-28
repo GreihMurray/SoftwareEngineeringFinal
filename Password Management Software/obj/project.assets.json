@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\mattk\\.nuget\\packages\\": {}
+    "C:\\Users\\murra\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mattk\\OneDrive\\Desktop\\Fall 2020\\Code\\Password Management Software\\Password Management Software.csproj",
+      "projectUniqueName": "C:\\Users\\murra\\Source\\Repos\\SoftwareEngineeringFinal\\Password Management Software\\Password Management Software.csproj",
       "projectName": "Password Management Software",
-      "projectPath": "C:\\Users\\mattk\\OneDrive\\Desktop\\Fall 2020\\Code\\Password Management Software\\Password Management Software.csproj",
-      "packagesPath": "C:\\Users\\mattk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mattk\\OneDrive\\Desktop\\Fall 2020\\Code\\Password Management Software\\obj\\",
+      "projectPath": "C:\\Users\\murra\\Source\\Repos\\SoftwareEngineeringFinal\\Password Management Software\\Password Management Software.csproj",
+      "packagesPath": "C:\\Users\\murra\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\murra\\Source\\Repos\\SoftwareEngineeringFinal\\Password Management Software\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mattk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\murra\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,16 +61,8 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\mattk\\OneDrive\\Desktop\\Fall 2020\\Code\\Password Management Software\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
