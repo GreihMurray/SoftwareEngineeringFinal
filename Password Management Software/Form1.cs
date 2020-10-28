@@ -170,16 +170,55 @@ namespace Password_Management_Software
                 if (inputFile != null)
                 {
                     String line;
-                    while ((line = inputFile.ReadLine()) != null)
+                    byte[] Key = Convert.FromBase64String(inputFile.ReadLine());
+                    byte[] IV = Convert.FromBase64String(inputFile.ReadLine());
+                    using (AesManaged myAes = new AesManaged())
                     {
-                        //string[] values = line.Split(',');//splits the data into its seperate values  
-                        create_new_password_from_file(line);
+                        while ((line = inputFile.ReadLine()) != null)
+                        {
+                            String decryptedPassword = decrypt_passwords(Convert.FromBase64String(line), Key, IV);
+                            //string[] values = line.Split(',');//splits the data into its seperate values  
+                            create_new_password_from_file(decryptedPassword);
 
+                        }
                     }
                 }
 
                 inputFile.Close();//close file
             }
+        }
+
+        private String decrypt_passwords(byte[] password, byte[] Key, byte[] IV) {
+            if (password == null || password.Length <= 0) {
+                throw new ArgumentNullException("password");
+            }
+            if (Key == null || Key.Length <= 0) {
+                throw new ArgumentNullException("Key");
+            }
+            if (IV == null || IV.Length <= 0) {
+                throw new ArgumentNullException("IV");
+            }
+
+            String decryptedPassword = null;
+
+            using (AesManaged aesAlg = new AesManaged()) {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
+
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(password))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt)) {
+                            decryptedPassword = srDecrypt.ReadToEnd();
+                        }
+                    }
+
+                }
+            }
+            return decryptedPassword;
         }
 
         private void button2_Click(object sender, EventArgs e)//password generator
