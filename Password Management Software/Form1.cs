@@ -101,10 +101,14 @@ namespace Password_Management_Software
         {
             string filename = "passwords.txt";
             StreamWriter outputfile = new StreamWriter(filename);
-            for (int i = 0; i < radioButtons.Count; i++)
-            {
-                using (AesManaged myAes = new AesManaged()){
-                    outputfile.WriteLine("{0}", Encoding.UTF8.GetString(encrypt_passwords(radioButtons[i].Text, myAes.Key, myAes.IV)));
+            using (AesManaged myAes = new AesManaged()){
+                outputfile.WriteLine("{0}", Convert.ToBase64String(myAes.Key));
+                outputfile.WriteLine("{0}", Convert.ToBase64String(myAes.IV));
+                for (int i = 0; i < radioButtons.Count; i++)
+                {
+
+                    outputfile.WriteLine("{0}", Convert.ToBase64String(encrypt_passwords(radioButtons[i].Text, myAes.Key, myAes.IV)));
+
                 }
             }
             outputfile.Close();
