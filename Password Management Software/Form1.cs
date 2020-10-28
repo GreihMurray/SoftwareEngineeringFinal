@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Security.AccessControl;
-using System.Security;
+using System.Security.Cryptography;
 
 namespace Password_Management_Software
 {
@@ -99,21 +99,55 @@ namespace Password_Management_Software
 
         private void save()
         {
-            string filename = @"passwords.txt";
+            string filename = "passwords.txt";
             StreamWriter outputfile = new StreamWriter(filename);
             for (int i = 0; i < radioButtons.Count; i++)
             {
-                outputfile.WriteLine(radioButtons[i].Text);
+                using (AesManaged myAes = new AesManaged()){
+                    outputfile.WriteLine("{0}", Encoding.UTF8.GetString(encrypt_passwords(radioButtons[i].Text, myAes.Key, myAes.IV)));
+                }
             }
             outputfile.Close();
 
-            secure(filename);
+            //hideFile(filename);
         }
 
-        private void secure(String filename) {
+        private void hideFile(String filename) {
             FileInfo fInfo = new FileInfo(filename);
 
             fInfo.Attributes = FileAttributes.Hidden;
+        }
+
+        private byte[] encrypt_passwords(String password, byte[] Key, byte[] IV) {
+            if (password == null || password.Length <= 0) {
+                throw new ArgumentNullException("password");
+            }
+            if (Key == null || Key.Length <= 0) {
+                throw new ArgumentNullException("Key");
+            }
+            if (IV == null || IV.Length <= 0) {
+                throw new ArgumentNullException("IV");
+            }
+
+            byte[] encrypted;
+
+            using (AesManaged aesAlg = new AesManaged()) {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
+
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream()) {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)) {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt)) {
+                            swEncrypt.Write(password);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+            return encrypted;
+            
         }
 
         private void load_file()
