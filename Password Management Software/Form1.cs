@@ -122,7 +122,7 @@ namespace Password_Management_Software
             fInfo.Attributes = FileAttributes.Hidden;
         }
 
-        private byte[] encrypt_passwords(String password, byte[] Key, byte[] IV) {
+        public byte[] encrypt_passwords(String password, byte[] Key, byte[] IV) {
             if (password == null || password.Length <= 0) {
                 throw new ArgumentNullException("password");
             }
