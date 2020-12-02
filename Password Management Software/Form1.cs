@@ -188,7 +188,7 @@ namespace Password_Management_Software
             }
         }
 
-        private String decrypt_passwords(byte[] password, byte[] Key, byte[] IV) {
+        public String decrypt_passwords(byte[] password, byte[] Key, byte[] IV) {
             if (password == null || password.Length <= 0) {
                 throw new ArgumentNullException("password");
             }

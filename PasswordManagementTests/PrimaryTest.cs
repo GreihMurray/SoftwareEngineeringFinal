@@ -20,7 +20,7 @@ namespace PasswordManagementTests
     public class PrimaryTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestEncryption()
         {
             byte[] key_IV = { 31, 32, 33, 34, 35, 36, 37, 38, 39, 30, 31, 32, 33, 34, 35, 36 };
 
@@ -29,6 +29,21 @@ namespace PasswordManagementTests
             Form1 frm = new Form1();
 
             var result = Convert.ToBase64String(frm.encrypt_passwords("Hello World", key_IV, key_IV));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestDecryption() {
+            byte[] key_IV = { 31, 32, 33, 34, 35, 36, 37, 38, 39, 30, 31, 32, 33, 34, 35, 36 };
+
+            byte[] password = Convert.FromBase64String("JSb3jQ6UmK+32dJhJZr2Zw==");
+
+            String expected = "Hello World";
+
+            Form1 frm = new Form1();
+
+            var result = frm.decrypt_passwords(password, key_IV, key_IV);
 
             Assert.AreEqual(expected, result);
         }
