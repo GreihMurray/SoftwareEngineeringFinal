@@ -53,20 +53,19 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button9 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -81,6 +80,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.Location = new System.Drawing.Point(8, 28);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
@@ -94,10 +94,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(707, 35);
+            this.button1.Location = new System.Drawing.Point(661, 33);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 31);
+            this.button1.Size = new System.Drawing.Size(119, 31);
             this.button1.TabIndex = 2;
             this.button1.Text = "Change Details";
             this.button1.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             this.button5.Location = new System.Drawing.Point(13, 16);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(153, 31);
+            this.button5.Size = new System.Drawing.Size(176, 31);
             this.button5.TabIndex = 13;
             this.button5.Text = "Create New Password";
             this.button5.UseVisualStyleBackColor = true;
@@ -241,6 +241,8 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Uncategorized"});
             this.comboBox1.Location = new System.Drawing.Point(19, 27);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
@@ -250,11 +252,15 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "All",
+            "Uncategorized"});
             this.comboBox2.Location = new System.Drawing.Point(109, 23);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(138, 28);
             this.comboBox2.TabIndex = 19;
+            this.comboBox2.Text = "All";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label5
@@ -313,37 +319,19 @@
             // 
             // textBox6
             // 
+            this.textBox6.AccessibleName = "yoda";
             this.textBox6.Location = new System.Drawing.Point(16, 29);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(116, 27);
             this.textBox6.TabIndex = 22;
             // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(175, 73);
-            this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(131, 31);
-            this.button8.TabIndex = 25;
-            this.button8.Text = "Sort Catagory";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(11, 73);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(156, 28);
-            this.comboBox3.TabIndex = 18;
-            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.comboBox3);
+            this.panel5.Controls.Add(this.comboBox4);
+            this.panel5.Controls.Add(this.button10);
             this.panel5.Controls.Add(this.textBox5);
-            this.panel5.Controls.Add(this.button8);
             this.panel5.Controls.Add(this.button6);
             this.panel5.Location = new System.Drawing.Point(1056, 93);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -351,26 +339,35 @@
             this.panel5.Size = new System.Drawing.Size(315, 235);
             this.panel5.TabIndex = 26;
             // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(11, 75);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(156, 28);
+            this.comboBox4.TabIndex = 18;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(175, 75);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(131, 31);
+            this.button10.TabIndex = 25;
+            this.button10.Text = "Delete Catagory";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(426, 19);
+            this.panel1.Location = new System.Drawing.Point(10, 19);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(202, 445);
+            this.panel1.Size = new System.Drawing.Size(618, 445);
             this.panel1.TabIndex = 12;
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(8, 17);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(202, 444);
-            this.listBox1.TabIndex = 27;
             // 
             // button9
             // 
@@ -389,27 +386,14 @@
             this.panel6.Controls.Add(this.button9);
             this.panel6.Controls.Add(this.button7);
             this.panel6.Controls.Add(this.button5);
-            this.panel6.Location = new System.Drawing.Point(1193, 396);
+            this.panel6.Location = new System.Drawing.Point(1145, 396);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(177, 138);
+            this.panel6.Size = new System.Drawing.Size(225, 138);
             this.panel6.TabIndex = 29;
-            // 
-            // listBox2
-            // 
-            this.listBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(217, 19);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(202, 444);
-            this.listBox2.TabIndex = 30;
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.listBox2);
-            this.panel7.Controls.Add(this.listBox1);
             this.panel7.Controls.Add(this.panel1);
             this.panel7.Location = new System.Drawing.Point(3, 75);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -460,6 +444,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.button11);
             this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.panel11);
             this.panel4.Controls.Add(this.panel10);
@@ -470,6 +455,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(940, 78);
             this.panel4.TabIndex = 32;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(818, 33);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(86, 31);
+            this.button11.TabIndex = 25;
+            this.button11.Text = "Delete";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 
@@ -530,14 +526,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Panel panel7;
@@ -546,6 +538,9 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 
