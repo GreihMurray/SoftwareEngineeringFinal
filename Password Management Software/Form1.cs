@@ -205,7 +205,8 @@ namespace Password_Management_Software
         {
             string filename = "passwords.txt";
             StreamWriter outputfile = new StreamWriter(filename);
-            using (AesManaged myAes = new AesManaged()){
+            using (AesManaged myAes = new AesManaged())
+            {
                 outputfile.WriteLine("{0}", Convert.ToBase64String(myAes.Key));
                 outputfile.WriteLine("{0}", Convert.ToBase64String(myAes.IV));
                 for (int i = 0; i < radioButtons.Count; i++)
@@ -218,34 +219,43 @@ namespace Password_Management_Software
             outputfile.Close();
         }
 
-        private void hideFile(String filename) {
+        private void hideFile(String filename)
+        {
             FileInfo fInfo = new FileInfo(filename);
 
             fInfo.Attributes = FileAttributes.Hidden;
         }
 
-        public byte[] encrypt_passwords(String password, byte[] Key, byte[] IV) {
-            if (password == null || password.Length <= 0) {
+        public byte[] encrypt_passwords(String password, byte[] Key, byte[] IV)
+        {
+            if (password == null || password.Length <= 0)
+            {
                 throw new ArgumentNullException("password");
             }
-            if (Key == null || Key.Length <= 0) {
+            if (Key == null || Key.Length <= 0)
+            {
                 throw new ArgumentNullException("Key");
             }
-            if (IV == null || IV.Length <= 0) {
+            if (IV == null || IV.Length <= 0)
+            {
                 throw new ArgumentNullException("IV");
             }
 
             byte[] encrypted;
 
-            using (AesManaged aesAlg = new AesManaged()) {
+            using (AesManaged aesAlg = new AesManaged())
+            {
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
 
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
-                using (MemoryStream msEncrypt = new MemoryStream()) {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)) {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt)) {
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
                             swEncrypt.Write(password);
                         }
                         encrypted = msEncrypt.ToArray();
@@ -253,7 +263,7 @@ namespace Password_Management_Software
                 }
             }
             return encrypted;
-            
+
         }
 
         private void load_file()
@@ -272,20 +282,21 @@ namespace Password_Management_Software
             {
                 StreamReader inputFile = new StreamReader(filename);
 
-                if (File.ReadLines(filename).Count() < 3) {
+                if (File.ReadLines(filename).Count() < 3)
+                {
                     breaker = true;
                 }
 
                 if (inputFile != null && breaker == false)
                 {
                     String line;
-                    
+
                     Key = Convert.FromBase64String(inputFile.ReadLine());
                     IV = Convert.FromBase64String(inputFile.ReadLine());
 
                     using (AesManaged myAes = new AesManaged())
                     {
-                        
+
                         while ((line = inputFile.ReadLine()) != null)
                         {
                             string[] values = line.Split(',');//splits the data into its seperate values  
@@ -296,28 +307,34 @@ namespace Password_Management_Software
                             create_new_password_from_file(decryptedPassword, name, category);
 
                         }
-                        
+
                     }
                 }
 
                 inputFile.Close();//close file
+                refresh();
             }
         }
 
-        public String decrypt_passwords(byte[] password, byte[] Key, byte[] IV) {
-            if (password == null || password.Length <= 0) {
+        public String decrypt_passwords(byte[] password, byte[] Key, byte[] IV)
+        {
+            if (password == null || password.Length <= 0)
+            {
                 throw new ArgumentNullException("password");
             }
-            if (Key == null || Key.Length <= 0) {
+            if (Key == null || Key.Length <= 0)
+            {
                 throw new ArgumentNullException("Key");
             }
-            if (IV == null || IV.Length <= 0) {
+            if (IV == null || IV.Length <= 0)
+            {
                 throw new ArgumentNullException("IV");
             }
 
             String decryptedPassword = null;
 
-            using (AesManaged aesAlg = new AesManaged()) {
+            using (AesManaged aesAlg = new AesManaged())
+            {
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
 
@@ -327,7 +344,8 @@ namespace Password_Management_Software
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt)) {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
                             decryptedPassword = srDecrypt.ReadToEnd();
                         }
                     }
@@ -476,17 +494,31 @@ namespace Password_Management_Software
 
         private void button3_Click(object sender, EventArgs e)//IF UPPERCASE
         {
-            uppercase = true;
+            if (uppercase == true)
+            {
+                uppercase = false;
+            }
+            else
+            {
+                uppercase = true;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)//if number
         {
-            number = true;
+            if (number == true)
+            {
+                number = false;
+            }
+            else
+            {
+                number = true;
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)//message box if you click exit
         {
-            DialogResult dialogResult = MessageBox.Show("Do you want to save before leaving?","Warning", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Do you want to save before leaving?", "Warning", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 save();
