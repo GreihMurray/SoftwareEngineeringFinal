@@ -47,7 +47,7 @@ namespace Password_Management_Software
                 }
                 else
                 {
-                    radioButtons[location].Text = "No Password";
+                    radioButtons[location].Text = radioButtons[location].Text;
                 }
                 Namelist[location].Text = textBox6.Text;
                 Catagoriesboxes[location].Text = comboBox1.Text;
