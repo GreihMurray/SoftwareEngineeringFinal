@@ -59,7 +59,7 @@ namespace Password_Management_Software
             comboBox1.Text = "";
         }
 
-        private void create_new_name(String name)//creates new name box
+        public void create_new_name(String name)//creates new name box
         {
             TextBox textBox = new TextBox();
             textBox.AutoSize = true;
@@ -77,7 +77,7 @@ namespace Password_Management_Software
             Namelist.Add(textBox);
         }
 
-        private void create_new_category(String category)//creates new category box
+        public void create_new_category(String category)//creates new category box
         {
             TextBox textBox = new TextBox();
             textBox.AutoSize = true;
@@ -96,7 +96,7 @@ namespace Password_Management_Software
             catagorylist.Add(category);
         }
 
-        private void create_new_password(string password)//creates new password buttons on the screen
+        public void create_new_password(string password)//creates new password buttons on the screen
         {
             if (passwords < 0)
             {
@@ -146,7 +146,7 @@ namespace Password_Management_Software
             comboBox1.Text = tmpCatagoriesboxes[clickedbutton].Text;
         }
 
-        private void create_new_password_from_file(string password, string name, string category)//creates new password buttons on the screen
+        public void create_new_password_from_file(string password, string name, string category)//creates new password buttons on the screen
         {
             if (passwords < 0)
             {
@@ -177,7 +177,7 @@ namespace Password_Management_Software
             create_new_password(password);
         }
 
-        private bool checkformatch(String catagory)//sees if there is already a catagory by that name
+        public bool checkformatch(String catagory)//sees if there is already a catagory by that name
         {
             for (int i = 0; i < catagorylist.Count; i++)
             {
@@ -201,7 +201,7 @@ namespace Password_Management_Software
             save();
         }
 
-        private void save()
+        public void save()
         {
             string filename = "passwords.txt";
             StreamWriter outputfile = new StreamWriter(filename);
@@ -217,13 +217,6 @@ namespace Password_Management_Software
                 }
             }
             outputfile.Close();
-        }
-
-        private void hideFile(String filename)
-        {
-            FileInfo fInfo = new FileInfo(filename);
-
-            fInfo.Attributes = FileAttributes.Hidden;
         }
 
         public byte[] encrypt_passwords(String password, byte[] Key, byte[] IV)
@@ -266,7 +259,7 @@ namespace Password_Management_Software
 
         }
 
-        private void load_file()
+        public void load_file()
         {
             byte[] Key = { };
             byte[] IV = { };
@@ -408,8 +401,11 @@ namespace Password_Management_Software
             refresh();
         }
 
-        private void refresh()//refreshes the screen
+        public void refresh()//refreshes the screen
         {
+            textBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            textBox1.ForeColor = Color.White;
+            textBox1.ReadOnly = true;
             passwords = 0;
             for (int i = 0; i < tmpradioButtons.Count(); i++)
             {
@@ -443,7 +439,7 @@ namespace Password_Management_Software
             }
         }
 
-        private void create_shiz(string pass, string cat, string nam)
+        public void create_shiz(string pass, string cat, string nam)
         {
             RadioButton radioButton = new RadioButton();
             radioButton.AutoSize = true;
@@ -496,10 +492,12 @@ namespace Password_Management_Software
         {
             if (uppercase == true)
             {
+                button3.BackColor = System.Drawing.Color.Transparent;
                 uppercase = false;
             }
             else
             {
+                button3.BackColor = System.Drawing.Color.Silver;
                 uppercase = true;
             }
         }
@@ -508,10 +506,12 @@ namespace Password_Management_Software
         {
             if (number == true)
             {
+                button4.BackColor = System.Drawing.Color.Transparent;
                 number = false;
             }
             else
             {
+                button4.BackColor = System.Drawing.Color.Silver;
                 number = true;
             }
         }
