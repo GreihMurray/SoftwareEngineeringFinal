@@ -41,19 +41,20 @@ namespace Password_Management_Software
             }
             else
             {
-                if (textBox2.Text != "")
+                if (textBox2.Text == "")
                 {
-                    radioButtons[location].Text = textBox2.Text;
+                    radioButtons[location].Text = "No Password";
                 }
                 else
                 {
-                    radioButtons[location].Text = radioButtons[location].Text;
+                    radioButtons[location].Text = textBox2.Text;
                 }
+
                 Namelist[location].Text = textBox6.Text;
                 Catagoriesboxes[location].Text = comboBox1.Text;
             }
             refresh();
-            textBox2.Text = "";
+
             textBox1.Text = "";
             textBox6.Text = "";
             comboBox1.Text = "";
@@ -125,6 +126,7 @@ namespace Password_Management_Software
             panel1.Controls.Add(radioButton);
             tmpradioButtons.Add(radioButton);
             radioButtons.Add(radioButton);
+            refresh();
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)//puts the passwords details into the editing area textbox
@@ -141,6 +143,7 @@ namespace Password_Management_Software
                 }
             }
             textBox1.Text = radioButton.Text;
+            textBox2.Text = textBox1.Text;
             clickedbutton = Int32.Parse(radioButton.Name);
             textBox6.Text = tmpNamelist[clickedbutton].Text;
             comboBox1.Text = tmpCatagoriesboxes[clickedbutton].Text;
@@ -191,8 +194,16 @@ namespace Password_Management_Software
 
         private void button5_Click(object sender, EventArgs e)//creates new password buttons
         {
+            //passwords = panel1.Controls.Count/3;
             create_new_name("No Name");
-            create_new_category("Uncategorized");
+            if (comboBox2.Text == "All")
+            {
+                create_new_category("Uncategorized");
+            }
+            else
+            {
+                create_new_category(comboBox2.Text);
+            }
             create_new_password("");
         }
 
@@ -555,7 +566,7 @@ namespace Password_Management_Software
 
         private void button11_Click(object sender, EventArgs e)//delete password
         {
-            if (textBox2.Text == "" || textBox1.Text == "" || textBox6.Text == "" || comboBox1.Text == "")
+            if (textBox1.Text == "" || textBox6.Text == "" || comboBox1.Text == "")
             {
 
             }
